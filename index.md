@@ -18,3 +18,11 @@ I'm attending **DataTalksClub Data Engineering Zoomcamp (Jan 2026)** and publish
 - Module 6: Streaming with Kafka
 - Project
 - Workshop 1 – dltHub
+
+###Topics of concentration:
+
+・Workflow orchestration
+・Data Warehousing
+・Analytical engineering
+・Batch processing
+・Stream processing
