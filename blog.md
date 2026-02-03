@@ -1,4 +1,4 @@
-# Week X: Building a Local Data Engineering Development Environment with Docker, Terraform, and GCP
+# Week 1: Building a Local Data Engineering Development Environment with Docker, Terraform, and GCP
 
 ## Objective
 The goal for this week was to understand **data engineering development workflows** by building a realistic local environment that mirrors production-style infrastructure. This included containerized services, cloud infrastructure provisioning using Infrastructure as Code (IaC), and automation to support repeatable development.
@@ -30,7 +30,8 @@ I built two primary Docker containers:
 
 Both containers were connected via a **custom Docker network**, allowing inter-container communication by service name rather than relying on `localhost`. Environment variables were used for configuration, and volumes were mounted to ensure **data persistence**, reinforcing the concept that Docker containers are stateless by default.
 
-![Local Docker Architecture](images/docker-architecture.png)
+![Local Docker Architecture]<img width="1200" height="662" alt="image" src="https://github.com/user-attachments/assets/7f2b21e5-9c53-4461-b0ab-7b97829d09cf" />
+
 
 > *Local Docker-based development architecture connecting ingestion, PostgreSQL, and administrative tools.*
 
