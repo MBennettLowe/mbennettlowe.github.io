@@ -1,0 +1,108 @@
+# Week X: Building a Local Data Engineering Development Environment with Docker, Terraform, and GCP
+
+## Objective
+The goal for this week was to understand **data engineering development workflows** by building a realistic local environment that mirrors production-style infrastructure. This included containerized services, cloud infrastructure provisioning using Infrastructure as Code (IaC), and automation to support repeatable development.
+
+---
+
+## Development Environment & Tooling
+I created the development environment inside a **virtual machine using GitHub Codespaces**, leveraging the VM package manager **uv** for dependency management. To simulate real-world data engineering workflows, I built **Docker containers** for Python-based data ingestion and PostgreSQL as the primary database.
+
+The tooling used included:
+- Docker & Docker networking
+- PostgreSQL
+- Python
+- Jupyter Notebook
+- Pandas
+- pgcli
+- pgAdmin
+- Terraform
+- Google Cloud Platform (GCP)
+
+This setup allowed me to separate application logic, storage, and infrastructure concerns—an important principle in data engineering.
+
+---
+
+## Containerized Architecture
+I built two primary Docker containers:
+- A **PostgreSQL container** for data storage
+- A **Python ingestion container** responsible for reading and ingesting data
+
+Both containers were connected via a **custom Docker network**, allowing inter-container communication by service name rather than relying on `localhost`. Environment variables were used for configuration, and volumes were mounted to ensure **data persistence**, reinforcing the concept that Docker containers are stateless by default.
+
+![Local Docker Architecture](images/docker-architecture.png)
+
+> *Local Docker-based development architecture connecting ingestion, PostgreSQL, and administrative tools.*
+
+This architecture closely resembles how data engineers develop and test pipelines locally before deploying to cloud infrastructure.
+
+---
+
+## Infrastructure as Code with Terraform
+To introduce cloud infrastructure management, I used **Terraform with GCP as the provider**. While GCP resources will be used more extensively in future weeks (e.g., BigQuery), this exercise focused on understanding Terraform fundamentals.
+
+I created:
+- A `variables.tf` file to parameterize infrastructure values
+- A `main.tf` file to define provider configuration and resources
+
+Using Terraform commands (`fmt`, `plan`, `apply`, and `destroy`), I practiced:
+- Formatting infrastructure code
+- Reviewing execution plans before deployment
+- Applying and tearing down infrastructure safely
+
+This reinforced how IaC supports **repeatability, version control, and lifecycle management**, which are critical for scalable data platforms.
+
+---
+
+## Challenges & Tradeoffs
+Running this environment inside GitHub Codespaces surfaced several real-world constraints.
+
+Although using a VM helped offload local system resources, **pgAdmin proved too resource-heavy** for Codespaces. The browser UI frequently failed to load, often displaying blank screens. This appears to be a common issue when combining Docker, PostgreSQL, and Codespaces.
+
+As a result, I shifted entirely to **pgcli**, which proved to be faster, more stable, and better suited for this environment.
+
+Ingesting larger datasets also required careful tuning of **chunk sizes**, as overly large chunks caused Codespaces to freeze or reset. This reinforced the importance of memory-aware ingestion strategies.
+
+> **Key takeaway:** Tooling choices matter, and lightweight CLI tools often outperform GUI tools in constrained environments.
+
+---
+
+## Automation & Workflow Improvements
+Because Codespaces sessions frequently time out, I repeatedly needed to:
+- Start Docker containers
+- Launch PostgreSQL
+- Connect via pgcli
+- Start Jupyter Notebook
+
+To reduce this repetition, I wrote my **first Bash script** to automate the startup sequence. While the script saved significant time, I later recognized that the correct long-term solution was to define the entire workflow using **docker-compose**.
+
+This progression—from manual commands, to scripting, to declarative orchestration—mirrors how production data engineering workflows evolve.
+
+---
+
+## Key Learnings
+- Docker containers are stateless by default; persistent data requires volumes
+- Docker networking enables service discovery without relying on `localhost`
+- Terraform enforces disciplined infrastructure lifecycles
+- CLI tools often outperform GUI tools in constrained or remote environments
+- Automation is essential for maintaining development velocity
+
+---
+
+## What I’d Do Differently Next Time
+- Skip pgAdmin entirely when using Codespaces
+- Default to smaller ingestion chunk sizes
+- Start with docker-compose instead of ad-hoc scripts
+- Separate ingestion logic from infrastructure code earlier
+
+---
+
+## Why This Matters for Data Engineering
+This project reflects how data engineers:
+- Build reproducible local development environments
+- Manage infrastructure using code
+- Debug containerized and cloud-based systems
+- Make tooling tradeoffs based on resource constraints
+- Automate repetitive workflows
+
+These skills translate directly to building and maintaining production data platforms.

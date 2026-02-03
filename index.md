@@ -3,11 +3,11 @@ layout: default
 title: Home
 ---
 
-## Hi, I'm learning data engineering in public 👋
+## Hi, my name is Monique Bennett-Lowe and I'm learning data engineering in public 👋
 
 I'm creating this GitHub Pages site to share my resume and showcase my learning in public.
 
-I'm attending **DataTalksClub Data Engineering Zoomcamp (Jan 2026)** and publishing weekly using **GitHub Actions**.
+I'm attending **DataTalksClub Data Engineering Zoomcamp (Jan 2026 session)** and publishing weekly using **GitHub Actions**.
 
 ### Zoomcamp Curriculum
 - Module 1: Docker & Terraform
