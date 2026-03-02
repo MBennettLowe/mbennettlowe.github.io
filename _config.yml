@@ -1,4 +1,3 @@
-title: MBennett Lowe
-description: Data Engineering Zoomcamp Journey
-markdown: kramdown
-theme: jekyll-theme-primer
+collections:
+  posts:
+    output: true
