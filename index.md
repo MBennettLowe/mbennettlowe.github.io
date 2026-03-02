@@ -3,6 +3,33 @@ layout: default
 title: Home
 ---
 
+## Debug Posts
+
+<ul>
+{% raw %}{% for post in site.posts %}{% endraw %}
+  <li>
+    <a href="{% raw %}{{ post.url }}{% endraw %}">
+      {% raw %}{{ post.title }}{% endraw %}
+    </a>
+  </li>
+{% raw %}{% endfor %}{% endraw %}
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Hi, my name is Monique Bennett-Lowe and I'm learning data engineering in public 👋
 
 I'm creating this GitHub Pages site to share my resume and showcase my learning in public.
